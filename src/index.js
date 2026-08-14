@@ -2,12 +2,10 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
-    // Worker test
     if (request.method === "GET" && url.pathname === "/") {
       return new Response("Life After 35 Bot is ONLINE ✅");
     }
 
-    // Set Telegram webhook
     if (request.method === "GET" && url.pathname === "/setup") {
       const webhookUrl = `${url.origin}/webhook`;
 
@@ -20,7 +18,6 @@ export default {
       });
     }
 
-    // Telegram webhook
     if (request.method === "POST" && url.pathname === "/webhook") {
       try {
         const update = await request.json();
